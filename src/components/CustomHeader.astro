@@ -192,16 +192,28 @@ const isAbout = pathname.includes('/about');
     margin-left: auto !important;
   }
 
-  /* 仅调整搜索触发按钮 (Search Trigger Button) 的加宽样式 */
-  site-search button[data-open-modal],
-  starlight-search button[data-open-modal],
-  site-search > button,
-  starlight-search > button {
-    width: 200px !important;
-    justify-content: space-between !important;
+  /* 🎯 响应式搜索按钮：桌面端宽度 200px，移动端收缩为图标/自适应模式，绝不遮挡标题 */
+  @media (min-width: 769px) {
+    site-search button[data-open-modal],
+    starlight-search button[data-open-modal],
+    site-search > button,
+    starlight-search > button {
+      width: 200px !important;
+      justify-content: space-between !important;
+    }
   }
 
-  /* 🎯 首页左侧分类导航样式 */
+  @media (max-width: 768px) {
+    site-search button[data-open-modal],
+    starlight-search button[data-open-modal],
+    site-search > button,
+    starlight-search > button {
+      width: auto !important;
+      padding: 0.4rem !important;
+    }
+  }
+
+  /* 首页左侧分类导航样式 */
   .category-sidebar-nav {
     padding: 1.0rem 0.75rem !important;
   }
