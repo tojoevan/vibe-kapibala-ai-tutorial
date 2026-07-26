@@ -6,79 +6,68 @@ const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-c
 const isAbout = pathname.includes('/about');
 ---
 
-<div class="custom-header-wrapper">
-  <!-- 顶层全局主菜单 (包含 首页、关于，预留扩展) -->
-  <div class="global-top-bar">
-    <div class="top-nav-links">
-      <a href="/" class:list={['top-link', { active: isHome }]}>
-        <svg class="top-link-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        首页
-      </a>
-      <a href="/about/" class:list={['top-link', { active: isAbout }]}>
-        <svg class="top-link-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-        关于
-      </a>
-    </div>
-  </div>
-
-  <!-- Starlight 默认搜索与标题栏 -->
+<div class="header-override-container">
   <Default {...Astro.props}><slot /></Default>
+  
+  <!-- 顶层主菜单 (注入在标题右侧) -->
+  <nav class="top-nav-inline" aria-label="主页顶层菜单">
+    <a href="/" class:list={['top-nav-link', { active: isHome }]}>
+      首页
+    </a>
+    <a href="/about/" class:list={['top-nav-link', { active: isAbout }]}>
+      关于
+    </a>
+  </nav>
 </div>
 
 <style>
-  .custom-header-wrapper {
+  .header-override-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+
+  /* 调整 Starlight 原生 Header 内联显示 */
+  .header-override-container :global(.header) {
     width: 100%;
   }
 
-  .global-top-bar {
-    background-color: var(--sl-color-gray-6);
-    border-bottom: 1px solid var(--sl-color-gray-5);
-    padding: 0.35rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .top-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .top-link {
+  .top-nav-inline {
+    position: absolute;
+    left: 240px; /* 紧跟在网站标题右侧 */
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 0.375rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--sl-color-gray-3);
-    text-decoration: none !important;
-    transition: all 0.15s ease-in-out;
+    z-index: 10;
   }
 
-  .top-link:hover {
+  @media (max-width: 768px) {
+    .top-nav-inline {
+      display: none; /* 移动端在小屏幕隐藏或自适应 */
+    }
+  }
+
+  .top-nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    border-radius: 0.35rem;
+    color: var(--sl-color-gray-3);
+    text-decoration: none !important;
+    transition: all 0.15s ease;
+  }
+
+  .top-nav-link:hover {
     color: var(--sl-color-white);
     background-color: var(--sl-color-gray-5);
   }
 
-  .top-link.active {
+  .top-nav-link.active {
     color: var(--sl-color-white);
     background-color: var(--sl-color-gray-5);
     font-weight: 600;
-  }
-
-  .top-link-icon {
-    opacity: 0.8;
   }
 </style>
