@@ -85,21 +85,21 @@ h1#_top,
 }
 
 /* ======================================================== */
-/* 🛠️ 精细化重构 Pagefind 搜索 Modal 弹窗                    */
-/* 消除图标遮挡文字、干掉突兀蓝色、极简精炼排版             */
+/* 🛠️ 搜索 Modal 弹窗：右侧放置 (右对齐，绝不居中)           */
 /* ======================================================== */
 
-/* 1. Modal 居中浮层容器 */
+/* 1. Modal 靠右浮层容器 */
 dialog[aria-label="Search"],
 dialog.dialog,
 site-search dialog,
 starlight-search dialog {
 	position: fixed !important;
-	top: 12% !important;
-	left: 50% !important;
-	transform: translateX(-50%) !important;
-	width: min(620px, 92vw) !important;
-	max-width: 620px !important;
+	top: 4rem !important;
+	right: 1.5rem !important;
+	left: auto !important;
+	transform: none !important;
+	width: min(560px, 90vw) !important;
+	max-width: 560px !important;
 	height: auto !important;
 	max-height: 75vh !important;
 	margin: 0 !important;
@@ -113,10 +113,21 @@ starlight-search dialog {
 	overflow: hidden !important;
 }
 
+@media (max-width: 640px) {
+	dialog[aria-label="Search"],
+	dialog.dialog,
+	site-search dialog,
+	starlight-search dialog {
+		right: 5% !important;
+		left: 5% !important;
+		width: 90vw !important;
+	}
+}
+
 /* 2. 遮罩背景 */
 dialog::backdrop {
-	background-color: rgba(15, 23, 42, 0.45) !important;
-	backdrop-filter: blur(4px) !important;
+	background-color: rgba(15, 23, 42, 0.35) !important;
+	backdrop-filter: blur(3px) !important;
 }
 
 /* 3. 隐藏 Pagefind 默认多余重叠的 "搜索" label 标签 */
@@ -207,7 +218,7 @@ dialog::backdrop {
 	line-height: 1.4 !important;
 }
 
-/* 7. 匹配关键词 mark 强调高亮：柔和灰背景，拒绝强刺激黄色/蓝色 */
+/* 7. 匹配关键词 mark 强调高亮：柔和灰背景 */
 .pagefind-ui mark {
 	background-color: rgba(100, 116, 139, 0.18) !important;
 	color: var(--sl-color-white) !important;

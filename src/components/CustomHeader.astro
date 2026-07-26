@@ -11,10 +11,10 @@ const isAbout = pathname.includes('/about');
 </div>
 
 <script>
-  function injectTopMenu() {
+  function initCustomUI() {
     const siteTitle = document.querySelector('.site-title');
     
-    // 注入内联顶层菜单在 SiteTitle 右侧
+    // 1. 注入内联顶层菜单在 SiteTitle 右侧
     if (siteTitle && !document.querySelector('.top-nav-inline-injected')) {
       const nav = document.createElement('nav');
       nav.className = 'top-nav-inline-injected';
@@ -44,10 +44,41 @@ const isAbout = pathname.includes('/about');
 
       siteTitle.after(nav);
     }
+
+    // 2. 教程页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
+    const rightSidebar = document.querySelector('.right-sidebar-panel') || document.querySelector('.right-sidebar');
+    if (rightSidebar && !document.querySelector('.recommended-links-widget')) {
+      const widget = document.createElement('div');
+      widget.className = 'recommended-links-widget';
+      widget.innerHTML = `
+        <div class="rec-widget-title">精选推荐与工具</div>
+        <ul class="rec-widget-list">
+          <li>
+            <a href="/prompt-basic/" class="rec-widget-link">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Claude Code 命令行工具
+            </a>
+          </li>
+          <li>
+            <a href="/llm-agent-overview/" class="rec-widget-link">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Agent Skills 规范指南
+            </a>
+          </li>
+          <li>
+            <a href="/cloudflare-github-deploy/" class="rec-widget-link">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              Cloudflare Pages 部署
+            </a>
+          </li>
+        </ul>
+      `;
+      rightSidebar.appendChild(widget);
+    }
   }
 
-  injectTopMenu();
-  document.addEventListener('astro:page-load', injectTopMenu);
+  initCustomUI();
+  document.addEventListener('astro:page-load', initCustomUI);
 </script>
 
 <style is:global>
@@ -107,12 +138,57 @@ const isAbout = pathname.includes('/about');
     opacity: 0.75;
   }
 
-  /* 仅调整搜索触发按钮 (Search Trigger Button) 的加宽样式，绝不污染弹窗 Modal 宽度 */
+  /* 右侧操作区严格右对齐靠最右 */
+  .header .sl-flex.print\:hidden,
+  .header .sl-flex:last-child {
+    margin-left: auto !important;
+  }
+
+  /* 仅调整搜索触发按钮 (Search Trigger Button) 的加宽样式 */
   site-search button[data-open-modal],
   starlight-search button[data-open-modal],
   site-search > button,
   starlight-search > button {
-    width: 220px !important;
+    width: 200px !important;
     justify-content: space-between !important;
+  }
+
+  /* 右侧推荐链接挂件 (Recommended Links Widget) 样式 */
+  .recommended-links-widget {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--sl-color-gray-5);
+  }
+
+  .rec-widget-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    margin-bottom: 0.65rem;
+    letter-spacing: -0.01em;
+  }
+
+  .rec-widget-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .rec-widget-list li {
+    margin-bottom: 0.45rem !important;
+  }
+
+  .rec-widget-link {
+    font-size: 0.8125rem !important;
+    color: var(--sl-color-gray-3) !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.15s ease;
+  }
+
+  .rec-widget-link:hover {
+    color: var(--sl-color-white) !important;
   }
 </style>

@@ -4,11 +4,11 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'Vibe Kapibala AI 教程网',
-      description: '全静态、低饱和度极简手册风格 AI 学习与工具速查手册',
+      title: '卡皮教程',
+      description: '专注 AI 领域的极简空间感速查手册与资料导航',
       logo: {
         src: './public/logo.png',
-        alt: 'Vibe Kapibala AI Logo',
+        alt: '卡皮教程 Logo',
         replacesTitle: false,
       },
       defaultLocale: 'zh-CN',
