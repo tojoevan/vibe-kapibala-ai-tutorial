@@ -1,114 +1,116 @@
 ---
-title: Vibe Kapibala AI 教程网 - 极简 AI 知识与工具导航
-description: 专注 AI 领域的极简高级教程与检索手册，参考菜鸟教程结构的导航全景首页
+title: Vibe Kapibala AI 教程网 - 全景 AI 教程分类导航
+description: 参考菜鸟教程体系架构的 AI 学习与开发工具极简全景导航网
 template: splash
 hero:
-  title: 极简 AI 知识与工具导航手册
-  tagline: 类似菜鸟教程/W3Cschool 的结构化学习平台。全静态、零数据库、秒级检索。支持快捷键 Ctrl + K 全局搜索。
+  title: 极简 AI 知识与工具分类导航
+  tagline: 参考菜鸟教程 (RUNOOB) 结构的体系化学习平台。全静态、零数据库开销、快捷键 Ctrl + K 离线全文检索。
   actions:
-    - text: 开始学习教程
+    - text: 查阅全部 AI 教程
       link: /ai-intro/
       icon: right-arrow
       variant: primary
-    - text: 关于本站与架构
+    - text: 关于本站架构
       link: /about/
       icon: information
 ---
 
-<div class="nav-section">
-  <div class="nav-section-title">
-    <span>🧠 01. AI 基础与大模型原理</span>
+<div class="runoob-section">
+  <div class="runoob-section-header">
+    🧠 01. AI 基础与核心原理 (AI Fundamentals)
   </div>
-  <div class="nav-card-grid">
-    <a href="/ai-intro/" class="nav-card">
-      <div>
-        <div class="nav-card-header">
-          <span class="nav-card-icon">⚡️</span>
-          <h3 class="nav-card-title">大语言模型 (LLM) 入门</h3>
+  <div class="runoob-grid">
+    <div class="runoob-box">
+      <h3 class="runoob-box-title">⚡️ 大语言模型原理</h3>
+      <p class="runoob-box-desc">探索大模型底层运作机制、Token 词元与注意力机制。</p>
+      <div class="runoob-list">
+        <a href="/ai-intro/" class="runoob-item-link">
+          <span>01. LLM 基础概念与 Token</span>
+          <span class="badge-active">已上线</span>
+        </a>
+        <div class="runoob-item-disabled">
+          <span>02. Transformer & Attention</span>
+          <span class="badge-planning">规划中</span>
         </div>
-        <p class="nav-card-desc">深入理解 LLM 基础概念、Token 词元切分、上下文窗口与 Transformer 自注意力机制。</p>
+        <div class="runoob-item-disabled">
+          <span>03. 开源模型与 GGUF 量化</span>
+          <span class="badge-planning">规划中</span>
+        </div>
       </div>
-      <div class="nav-card-footer">
-        <span>教程手册</span>
-        <span>控制阅读 →</span>
-      </div>
-    </a>
+    </div>
   </div>
 </div>
 
-<div class="nav-section">
-  <div class="nav-section-title">
-    <span>🎯 02. Prompt 提示词工程</span>
+<div class="runoob-section">
+  <div class="runoob-section-header">
+    🎯 02. Prompt 提示词工程 (Prompt Engineering)
   </div>
-  <div class="nav-card-grid">
-    <a href="/prompt-basic/" class="nav-card">
-      <div>
-        <div class="nav-card-header">
-          <span class="nav-card-icon">✍️</span>
-          <h3 class="nav-card-title">Prompt 核心技巧与结构设计</h3>
+  <div class="runoob-grid">
+    <div class="runoob-box">
+      <h3 class="runoob-box-title">✍️ 结构化 Prompt 设计</h3>
+      <p class="runoob-box-desc">精通角色设定、CoT 思维链与上下文示例控制。</p>
+      <div class="runoob-list">
+        <a href="/prompt-basic/" class="runoob-item-link">
+          <span>01. Prompt 核心技巧与结构设计</span>
+          <span class="badge-active">已上线</span>
+        </a>
+        <div class="runoob-item-disabled">
+          <span>02. CoT 链式思考与复杂推理</span>
+          <span class="badge-planning">规划中</span>
         </div>
-        <p class="nav-card-desc">掌握 Role-Task-Context 结构化提示词写法，学习 CoT 思维链与 Few-Shot 示例技巧。</p>
+        <div class="runoob-item-disabled">
+          <span>03. 结构化输出 (JSON Mode)</span>
+          <span class="badge-planning">规划中</span>
+        </div>
       </div>
-      <div class="nav-card-footer">
-        <span>实战指南</span>
-        <span>立即阅读 →</span>
-      </div>
-    </a>
+    </div>
   </div>
 </div>
 
-<div class="nav-section">
-  <div class="nav-section-title">
-    <span>🤖 03. Agent 智能体与框架</span>
+<div class="runoob-section">
+  <div class="runoob-section-header">
+    🤖 03. Agent 智能体与框架 (AI Agents & Tools)
   </div>
-  <div class="nav-card-grid">
-    <a href="/llm-agent-overview/" class="nav-card">
-      <div>
-        <div class="nav-card-header">
-          <span class="nav-card-icon">🧩</span>
-          <h3 class="nav-card-title">AI Agent 核心概念与架构</h3>
+  <div class="runoob-grid">
+    <div class="runoob-box">
+      <h3 class="runoob-box-title">🧩 自主 Agent 架构</h3>
+      <p class="runoob-box-desc">探索 Planning 规划、Memory 记忆与工具调用实战。</p>
+      <div class="runoob-list">
+        <a href="/llm-agent-overview/" class="runoob-item-link">
+          <span>01. AI Agent 核心概念与架构</span>
+          <span class="badge-active">已上线</span>
+        </a>
+        <div class="runoob-item-disabled">
+          <span>02. Function Calling 工具调用</span>
+          <span class="badge-planning">规划中</span>
         </div>
-        <p class="nav-card-desc">解析自主 Agent 的四大核心组件：Planning 规划、Memory 记忆、Tool Use 工具调用与多 Agent 协作。</p>
+        <div class="runoob-item-disabled">
+          <span>03. LangGraph / Multi-Agent</span>
+          <span class="badge-planning">规划中</span>
+        </div>
       </div>
-      <div class="nav-card-footer">
-        <span>架构设计</span>
-        <span>立即阅读 →</span>
-      </div>
-    </a>
+    </div>
   </div>
 </div>
 
-<div class="nav-section">
-  <div class="nav-section-title">
-    <span>🚀 04. 项目部署与站务</span>
+<div class="runoob-section">
+  <div class="runoob-section-header">
+    🚀 04. 部署运维与站务 (DevOps & Site)
   </div>
-  <div class="nav-card-grid">
-    <a href="/cloudflare-github-deploy/" class="nav-card">
-      <div>
-        <div class="nav-card-header">
-          <span class="nav-card-icon">☁️</span>
-          <h3 class="nav-card-title">GitHub + Cloudflare 部署指南</h3>
-        </div>
-        <p class="nav-card-desc">教你如何在 Cloudflare Pages 零成本发布全静态网站，支持 Git Push 全自动部署上线。</p>
+  <div class="runoob-grid">
+    <div class="runoob-box">
+      <h3 class="runoob-box-title">☁️ 无服务器与极速部署</h3>
+      <p class="runoob-box-desc">全静态 GitHub + Cloudflare Pages 运维指南。</p>
+      <div class="runoob-list">
+        <a href="/cloudflare-github-deploy/" class="runoob-item-link">
+          <span>01. GitHub + Cloudflare Pages 部署</span>
+          <span class="badge-active">已上线</span>
+        </a>
+        <a href="/about/" class="runoob-item-link">
+          <span>02. 关于本站设计与贡献说明</span>
+          <span class="badge-active">项目说明</span>
+        </a>
       </div>
-      <div class="nav-card-footer">
-        <span>部署教程</span>
-        <span>立即阅读 →</span>
-      </div>
-    </a>
-
-    <a href="/about/" class="nav-card">
-      <div>
-        <div class="nav-card-header">
-          <span class="nav-card-icon">ℹ️</span>
-          <h3 class="nav-card-title">关于本站 (About)</h3>
-        </div>
-        <p class="nav-card-desc">了解网站设计初衷、零数据库限制优化、Pagefind 全文检索与 Giscus GitHub 互动配置。</p>
-      </div>
-      <div class="nav-card-footer">
-        <span>项目说明</span>
-        <span>查看详情 →</span>
-      </div>
-    </a>
+    </div>
   </div>
 </div>
