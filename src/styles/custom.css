@@ -71,12 +71,12 @@ body {
 
 /* 彻底解决 Header 吸顶导致的页面 h1 标题遮挡问题 */
 .main-frame {
-	padding-top: 2.25rem !important; /* 增加足够的上边距，防止被顶栏遮挡 */
+	padding-top: 2rem !important; /* 精确边距 */
 	padding-bottom: 3.5rem !important;
 }
 
 .content-panel {
-	padding: 1.5rem 1.5rem !important;
+	padding: 1rem 1.5rem !important;
 	max-width: 100% !important;
 }
 
@@ -84,9 +84,9 @@ body {
 .sl-markdown-content h1,
 h1#_top,
 .content-panel h1 {
-	margin-top: 1rem !important;
-	margin-bottom: 1.5rem !important;
-	font-size: 1.5rem !important; /* 24px 精致主标题，不撑大遮挡 */
+	margin-top: 0.5rem !important; /* 统一小边距 */
+	margin-bottom: 1.25rem !important;
+	font-size: 1.5rem !important; /* 24px 精致主标题 */
 	font-weight: 700 !important;
 	line-height: 1.3 !important;
 	color: var(--sl-color-white) !important;
@@ -276,7 +276,7 @@ dialog::backdrop {
 /* 首页主容器 */
 .index-portal-wrapper {
 	width: 100%;
-	margin-top: 0.5rem;
+	margin-top: 0.25rem;
 }
 
 .section-group {
