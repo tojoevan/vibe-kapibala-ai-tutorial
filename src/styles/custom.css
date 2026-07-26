@@ -1,47 +1,138 @@
-/* 自定义主题色彩与 CSS 增强 */
+/* 高级灰 (Minimalist Slate & Charcoal) 极简高端主题设计 */
 :root {
-	--sl-color-accent-low: #1e1b4b;
-	--sl-color-accent: #6366f1;
-	--sl-color-accent-high: #a5b4fc;
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #f3f4f6;
-	--sl-color-gray-2: #e5e7eb;
-	--sl-color-gray-3: #9ca3af;
-	--sl-color-gray-4: #4b5563;
-	--sl-color-gray-5: #1f2937;
-	--sl-color-gray-6: #111827;
-	--sl-color-black: #0b0f19;
+	/* 浅色模式 - 沉稳冷灰与墨黑 */
+	--sl-color-accent-low: #f1f5f9;
+	--sl-color-accent: #475569;
+	--sl-color-accent-high: #0f172a;
+	--sl-color-white: #0f172a;
+	--sl-color-gray-1: #1e293b;
+	--sl-color-gray-2: #334155;
+	--sl-color-gray-3: #64748b;
+	--sl-color-gray-4: #94a3b8;
+	--sl-color-gray-5: #e2e8f0;
+	--sl-color-gray-6: #f8fafc;
+	--sl-color-black: #ffffff;
 }
 
 :root[data-theme='dark'] {
-	--sl-color-accent-low: #312e81;
-	--sl-color-accent: #818cf8;
-	--sl-color-accent-high: #c7d2fe;
+	/* 深色模式 - 高级石墨灰、冷钛灰与银白 */
+	--sl-color-accent-low: #1e293b;
+	--sl-color-accent: #94a3b8;
+	--sl-color-accent-high: #f8fafc;
+	--sl-color-white: #f8fafc;
+	--sl-color-gray-1: #f1f5f9;
+	--sl-color-gray-2: #cbd5e1;
+	--sl-color-gray-3: #94a3b8;
+	--sl-color-gray-4: #475569;
+	--sl-color-gray-5: #1e293b;
+	--sl-color-gray-6: #0f172a;
+	--sl-color-black: #090d16;
 }
 
-/* 顶部导航与侧边栏高亮特效 */
+/* 全局背景微调 */
+body {
+	background-color: var(--sl-color-gray-6);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* 标题样式：高端金属灰梯度 */
 .site-title {
-	font-weight: 800;
-	letter-spacing: -0.025em;
-	background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	background: linear-gradient(135deg, var(--sl-color-white) 0%, var(--sl-color-gray-3) 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
+/* 极简高级导航网格系统 */
+.nav-section {
+	margin-bottom: 3rem;
+}
+
+.nav-section-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--sl-color-white);
+	margin-bottom: 1.25rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.nav-card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1.25rem;
+}
+
+.nav-card {
+	background: var(--sl-color-gray-6);
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.75rem;
+	padding: 1.25rem;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	text-decoration: none !important;
+	color: inherit !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.nav-card:hover {
+	border-color: var(--sl-color-gray-3);
+	transform: translateY(-2px);
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-card-header {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.nav-card-icon {
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+.nav-card-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--sl-color-white);
+	margin: 0 !important;
+}
+
+.nav-card-desc {
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+	line-height: 1.5;
+	margin: 0 !important;
+}
+
+.nav-card-footer {
+	margin-top: 1rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--sl-color-gray-2);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 /* 评论区面板面板美化 */
 .giscus-wrapper {
-	margin-top: 3rem;
+	margin-top: 3.5rem;
 	padding-top: 2rem;
 	border-top: 1px solid var(--sl-color-gray-5);
 }
 
 .giscus-title {
-	font-size: 1.25rem;
+	font-size: 1.2rem;
 	font-weight: 700;
-	margin-bottom: 1rem;
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
+	margin-bottom: 0.5rem;
 	color: var(--sl-color-white);
 }
 

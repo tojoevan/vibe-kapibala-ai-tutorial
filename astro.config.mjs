@@ -5,7 +5,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Vibe Kapibala AI 教程网',
-      description: '全静态、高性能、无数据库开销的 AI 学习与工具查询手册',
+      description: '极简高级灰风格的 AI 学习与工具全景导航手册 (全静态、零数据库)',
       defaultLocale: 'zh-CN',
       locales: {
         'zh-CN': {
@@ -16,9 +16,10 @@ export default defineConfig({
       // 侧边栏配置：平铺 docs/ 文件的逻辑分组
       sidebar: [
         {
-          label: '🚀 快速开始与部署',
+          label: '📌 快速导航与关于',
           items: [
-            { label: '项目介绍与部署指南', link: '/cloudflare-github-deploy/' },
+            { label: '关于本站与设计理念', link: '/about/' },
+            { label: 'GitHub + Cloudflare 部署指南', link: '/cloudflare-github-deploy/' },
           ],
         },
         {
