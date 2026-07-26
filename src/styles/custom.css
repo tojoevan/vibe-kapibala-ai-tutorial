@@ -61,6 +61,11 @@ dialog[aria-label="Search"] * {
 	--pagefind-ui-border: #334155 !important;
 }
 
+/* 🎯 覆盖 Starlight 原生 MDX 元素相邻间距为 1.5rem */
+.sl-markdown-content :not(a,strong,em,del,span,input,code,br)+:not(a,strong,em,del,span,input,code,br,:where(.not-content *)) {
+	margin-top: 1.5rem !important;
+}
+
 /* 🎯 点击分类锚点跳转时的滚动垂直对齐与 Header 吸顶避让留白 */
 .section-group,
 .section-group-header,
