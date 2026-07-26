@@ -41,8 +41,9 @@ export default defineConfig({
           ],
         },
       ],
-      // 交互与定制组件重写
+      // 交互与定制组件重写 (加入顶层 Header 导航组件)
       components: {
+        Header: './src/components/CustomHeader.astro',
         Footer: './src/components/CustomFooter.astro',
       },
       customCss: [

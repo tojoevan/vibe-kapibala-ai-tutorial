@@ -3,10 +3,10 @@ title: Vibe Kapibala AI 教程网 - 全景 AI 教程分类导航
 description: 专注 AI 领域的极简全景知识分类导航与检索手册
 template: splash
 hero:
-  title: 极简 AI 知识与工具分类导航
-  tagline: 结构化的体系化 AI 学习与工具检索平台。全静态、零数据库开销、快捷键 Ctrl + K 离线全文检索。
+  title: 极简 AI 知识与工具导航手册
+  tagline: 全静态、零数据库开销、快捷键 Ctrl + K 离线全文检索。按快捷卡片快速速查与学习。
   actions:
-    - text: 查阅全部 AI 教程
+    - text: 开始学习教程
       link: /ai-intro/
       icon: right-arrow
       variant: primary
@@ -15,102 +15,117 @@ hero:
       icon: information
 ---
 
-<div class="portal-section">
-  <div class="portal-section-header">
-    🧠 01. AI 基础与核心原理 (AI Fundamentals)
+<div class="section-block">
+  <div class="section-title-bar">
+    <span>📑 AI / 智能开发核心教程</span>
   </div>
-  <div class="portal-grid">
-    <div class="portal-box">
-      <h3 class="portal-box-title">⚡️ 大语言模型原理</h3>
-      <p class="portal-box-desc">探索大模型底层运作机制、Token 词元与注意力机制。</p>
-      <div class="portal-list">
-        <a href="/ai-intro/" class="portal-item-link">
-          <span>01. LLM 基础概念与 Token</span>
-          <span class="badge-active">已上线</span>
-        </a>
-        <div class="portal-item-disabled">
-          <span>02. Transformer & Attention</span>
-          <span class="badge-planning">规划中</span>
-        </div>
-        <div class="portal-item-disabled">
-          <span>03. 开源模型与 GGUF 量化</span>
-          <span class="badge-planning">规划中</span>
-        </div>
+
+  <div class="grid-3col">
+    {/* 卡片 1: AI Agent 智能体 */}
+    <a href="/llm-agent-overview/" class="card-item">
+      <div class="card-icon-box">🤖</div>
+      <div class="card-body">
+        <h3 class="card-title">【AI Agent (智能体)】</h3>
+        <p class="card-desc">AI Agent 让模型不只回答问题，而是按步骤自主完成动作。</p>
       </div>
+      <span class="card-badge badge-new">已上线</span>
+    </a>
+
+    {/* 卡片 2: AI 入门与大模型基础 */}
+    <a href="/ai-intro/" class="card-item">
+      <div class="card-icon-box">🧠</div>
+      <div class="card-body">
+        <h3 class="card-title">【AI (人工智能基础)】</h3>
+        <p class="card-desc">深入理解 LLM 基础概念、Token 词元与上下文窗口。</p>
+      </div>
+      <span class="card-badge badge-new">已上线</span>
+    </a>
+
+    {/* 卡片 3: Prompt 工程设计 */}
+    <a href="/prompt-basic/" class="card-item">
+      <div class="card-icon-box">✍️</div>
+      <div class="card-body">
+        <h3 class="card-title">【Prompt 提示词工程】</h3>
+        <p class="card-desc">掌握 Role-Task 结构化提示词与 CoT 思维链设计。</p>
+      </div>
+      <span class="card-badge badge-new">已上线</span>
+    </a>
+
+    {/* 卡片 4: GitHub + Cloudflare 部署 */}
+    <a href="/cloudflare-github-deploy/" class="card-item">
+      <div class="card-icon-box">☁️</div>
+      <div class="card-body">
+        <h3 class="card-title">【全静态无服务器部署】</h3>
+        <p class="card-desc">教你在 Cloudflare Pages 零成本发布全静态网站。</p>
+      </div>
+      <span class="card-badge badge-new">已上线</span>
+    </a>
+
+    {/* 卡片 5: Vibe Coding 全新开发方式 */}
+    <div class="card-item">
+      <div class="card-icon-box">💻</div>
+      <div class="card-body">
+        <h3 class="card-title">【学习 Vibe Coding】</h3>
+        <p class="card-desc">Vibe Coding 是人与 AI 协作研发的全新软件开发方式。</p>
+      </div>
+      <span class="card-badge badge-plan">规划中</span>
+    </div>
+
+    {/* 卡片 6: Claude Code AI 编程 */}
+    <div class="card-item">
+      <div class="card-icon-box">✳️</div>
+      <div class="card-body">
+        <h3 class="card-title">【Claude Code】</h3>
+        <p class="card-desc">Anthropic 推出的 Terminal 极速 AI 编程协作工具。</p>
+      </div>
+      <span class="card-badge badge-plan">规划中</span>
+    </div>
+
+    {/* 卡片 7: 学习 Ollama 本地模型 */}
+    <div class="card-item">
+      <div class="card-icon-box">🦙</div>
+      <div class="card-body">
+        <h3 class="card-title">【学习 Ollama】</h3>
+        <p class="card-desc">开源本地大语言模型快速运行与部署框架。</p>
+      </div>
+      <span class="card-badge badge-plan">规划中</span>
+    </div>
+
+    {/* 卡片 8: Function Calling 工具调用 */}
+    <div class="card-item">
+      <div class="card-icon-box">🔧</div>
+      <div class="card-body">
+        <h3 class="card-title">【Function Calling】</h3>
+        <p class="card-desc">让大语言模型连接外部 API 与数据库实现智能调用。</p>
+      </div>
+      <span class="card-badge badge-plan">规划中</span>
+    </div>
+
+    {/* 卡片 9: RAG 检索增强生成 */}
+    <div class="card-item">
+      <div class="card-icon-box">📚</div>
+      <div class="card-body">
+        <h3 class="card-title">【RAG 知识库检索】</h3>
+        <p class="card-desc">结合向量嵌入与私有知识库构建精准对话系统。</p>
+      </div>
+      <span class="card-badge badge-plan">规划中</span>
     </div>
   </div>
 </div>
 
-<div class="portal-section">
-  <div class="portal-section-header">
-    🎯 02. Prompt 提示词工程 (Prompt Engineering)
+<div class="section-block">
+  <div class="section-title-bar">
+    <span>⚙️ 站务与关于</span>
   </div>
-  <div class="portal-grid">
-    <div class="portal-box">
-      <h3 class="portal-box-title">✍️ 结构化 Prompt 设计</h3>
-      <p class="portal-box-desc">精通角色设定、CoT 思维链与上下文示例控制。</p>
-      <div class="portal-list">
-        <a href="/prompt-basic/" class="portal-item-link">
-          <span>01. Prompt 核心技巧与结构设计</span>
-          <span class="badge-active">已上线</span>
-        </a>
-        <div class="portal-item-disabled">
-          <span>02. CoT 链式思考与复杂推理</span>
-          <span class="badge-planning">规划中</span>
-        </div>
-        <div class="portal-item-disabled">
-          <span>03. 结构化输出 (JSON Mode)</span>
-          <span class="badge-planning">规划中</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="portal-section">
-  <div class="portal-section-header">
-    🤖 03. Agent 智能体与框架 (AI Agents & Tools)
-  </div>
-  <div class="portal-grid">
-    <div class="portal-box">
-      <h3 class="portal-box-title">🧩 自主 Agent 架构</h3>
-      <p class="portal-box-desc">探索 Planning 规划、Memory 记忆与工具调用实战。</p>
-      <div class="portal-list">
-        <a href="/llm-agent-overview/" class="portal-item-link">
-          <span>01. AI Agent 核心概念与架构</span>
-          <span class="badge-active">已上线</span>
-        </a>
-        <div class="portal-item-disabled">
-          <span>02. Function Calling 工具调用</span>
-          <span class="badge-planning">规划中</span>
-        </div>
-        <div class="portal-item-disabled">
-          <span>03. LangGraph / Multi-Agent</span>
-          <span class="badge-planning">规划中</span>
-        </div>
+  <div class="grid-3col">
+    <a href="/about/" class="card-item">
+      <div class="card-icon-box">ℹ️</div>
+      <div class="card-body">
+        <h3 class="card-title">【关于本站 (About)】</h3>
+        <p class="card-desc">了解网站设计初衷、零数据库限制优化与 Pagefind 全文检索。</p>
       </div>
-    </div>
-  </div>
-</div>
-
-<div class="portal-section">
-  <div class="portal-section-header">
-    🚀 04. 部署运维与站务 (DevOps & Site)
-  </div>
-  <div class="portal-grid">
-    <div class="portal-box">
-      <h3 class="portal-box-title">☁️ 无服务器与极速部署</h3>
-      <p class="portal-box-desc">全静态 GitHub + Cloudflare Pages 运维指南。</p>
-      <div class="portal-list">
-        <a href="/cloudflare-github-deploy/" class="portal-item-link">
-          <span>01. GitHub + Cloudflare Pages 部署</span>
-          <span class="badge-active">已上线</span>
-        </a>
-        <a href="/about/" class="portal-item-link">
-          <span>02. 关于本站设计与贡献说明</span>
-          <span class="badge-active">项目说明</span>
-        </a>
-      </div>
-    </div>
+      <span class="card-badge badge-new">说明</span>
+    </a>
   </div>
 </div>
