@@ -13,26 +13,27 @@ const isAbout = pathname.includes('/about');
 <script>
   function initCustomUI() {
     const siteTitle = document.querySelector('.site-title');
-    
+    const pathname = window.location.pathname;
+    const isHome = pathname === '/' || pathname === '/en/' || pathname === '/en';
+
     // 1. 注入内联顶层菜单在 SiteTitle 右侧
     if (siteTitle && !document.querySelector('.top-nav-inline-injected')) {
       const nav = document.createElement('nav');
       nav.className = 'top-nav-inline-injected';
       nav.setAttribute('aria-label', '主页顶层菜单');
 
-      const pathname = window.location.pathname;
-      const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-cn';
-      const isAbout = pathname.includes('/about');
+      const isHomeNav = pathname === '/' || pathname === '/en/' || pathname === '/en';
+      const isAboutNav = pathname.includes('/about');
 
       nav.innerHTML = `
-        <a href="/" class="top-nav-link ${isHome ? 'active' : ''}">
+        <a href="/" class="top-nav-link ${isHomeNav ? 'active' : ''}">
           <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
             <polyline points="9 22 9 12 15 12 15 22"></polyline>
           </svg>
           首页
         </a>
-        <a href="/about/" class="top-nav-link ${isAbout ? 'active' : ''}">
+        <a href="/about/" class="top-nav-link ${isAboutNav ? 'active' : ''}">
           <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
@@ -45,9 +46,52 @@ const isAbout = pathname.includes('/about');
       siteTitle.after(nav);
     }
 
-    // 2. 教程页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
+    // 2. 首页专享：将左侧侧边栏由树状文件目录重构为“全景分类索引”
+    // 点击分类后第二栏平滑滚动至对应分类
+    const sidebar = document.querySelector('.sidebar-content') || document.querySelector('starlight-sidebar');
+    if (isHome && sidebar && !document.querySelector('.category-sidebar-nav')) {
+      const categoryNav = document.createElement('div');
+      categoryNav.className = 'category-sidebar-nav';
+      categoryNav.innerHTML = `
+        <div class="category-nav-title">分类快速导航</div>
+        <ul class="category-nav-list">
+          <li><a href="#ai-agent" class="category-nav-item active">01. AI Agent 智能体</a></li>
+          <li><a href="#skills-workflow" class="category-nav-item">02. Skills 技能与工作流</a></li>
+          <li><a href="#ai-coding" class="category-nav-item">03. AI 编程与协作工具</a></li>
+          <li><a href="#llm-basics" class="category-nav-item">04. LLM 大模型基础</a></li>
+          <li><a href="#prompt-eng" class="category-nav-item">05. Prompt 提示词工程</a></li>
+          <li><a href="#rag-vectordb" class="category-nav-item">06. RAG 与向量数据库</a></li>
+          <li><a href="#book-writing" class="category-nav-item">07. 书籍与长文写作</a></li>
+          <li><a href="#site-deploy" class="category-nav-item">08. 部署与站务说明</a></li>
+        </ul>
+      `;
+
+      // 替换侧边栏为纯净分类导航
+      sidebar.innerHTML = '';
+      sidebar.appendChild(categoryNav);
+
+      // 绑定平滑滚动事件
+      const navLinks = categoryNav.querySelectorAll('.category-nav-item');
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            // 切换激活状态
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // 第二栏平滑滚动到对应分类
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    }
+
+    // 3. 教程文章页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
     const rightSidebar = document.querySelector('.right-sidebar-panel') || document.querySelector('.right-sidebar');
-    if (rightSidebar && !document.querySelector('.recommended-links-widget')) {
+    if (!isHome && rightSidebar && !document.querySelector('.recommended-links-widget')) {
       const widget = document.createElement('div');
       widget.className = 'recommended-links-widget';
       widget.innerHTML = `
@@ -151,6 +195,52 @@ const isAbout = pathname.includes('/about');
   starlight-search > button {
     width: 200px !important;
     justify-content: space-between !important;
+  }
+
+  /* 首页左侧分类导航样式 */
+  .category-sidebar-nav {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .category-nav-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .category-nav-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .category-nav-list li {
+    margin-bottom: 0.35rem !important;
+  }
+
+  .category-nav-item {
+    display: block;
+    font-size: 0.84rem !important;
+    font-weight: 500;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.375rem;
+    color: var(--sl-color-gray-2);
+    text-decoration: none !important;
+    transition: all 0.15s ease;
+  }
+
+  .category-nav-item:hover {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-5);
+  }
+
+  .category-nav-item.active {
+    color: var(--sl-color-white);
+    background-color: var(--sl-color-gray-5);
+    font-weight: 600;
   }
 
   /* 右侧推荐链接挂件 (Recommended Links Widget) 样式 */
