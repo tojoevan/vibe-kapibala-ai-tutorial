@@ -61,6 +61,27 @@ dialog[aria-label="Search"] * {
 	--pagefind-ui-border: #334155 !important;
 }
 
+/* 🎯 强制 #starlight__search input:focus 的 --pagefind-ui-border 为灰色 */
+#starlight__search input:focus,
+#starlight__search input:focus-visible,
+#starlight__search input:active,
+#starlight__search .pagefind-ui__search-input:focus {
+	--pagefind-ui-border: #cbd5e1 !important;
+	border-color: #64748b !important;
+	outline: none !important;
+	box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2) !important;
+}
+
+:root[data-theme='dark'] #starlight__search input:focus,
+:root[data-theme='dark'] #starlight__search input:focus-visible,
+:root[data-theme='dark'] #starlight__search input:active,
+:root[data-theme='dark'] #starlight__search .pagefind-ui__search-input:focus {
+	--pagefind-ui-border: #334155 !important;
+	border-color: #94a3b8 !important;
+	outline: none !important;
+	box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.2) !important;
+}
+
 /* 🎯 覆盖 Starlight 原生 MDX 元素相邻间距为 1.5rem */
 .sl-markdown-content :not(a,strong,em,del,span,input,code,br)+:not(a,strong,em,del,span,input,code,br,:where(.not-content *)) {
 	margin-top: 1.5rem !important;
