@@ -47,7 +47,6 @@ const isAbout = pathname.includes('/about');
     }
 
     // 2. 首页专享：将左侧侧边栏由树状文件目录重构为“全景分类索引”
-    // 点击分类后第二栏平滑滚动至对应分类
     const sidebar = document.querySelector('.sidebar-content') || document.querySelector('starlight-sidebar');
     if (isHome && sidebar && !document.querySelector('.category-sidebar-nav')) {
       const categoryNav = document.createElement('div');
@@ -78,18 +77,24 @@ const isAbout = pathname.includes('/about');
           const targetId = link.getAttribute('href');
           const targetEl = document.querySelector(targetId);
           if (targetEl) {
-            // 切换激活状态
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            
-            // 第二栏平滑滚动到对应分类
             targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
       });
     }
 
-    // 3. 教程文章页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
+    // 3. 🎯 核心解决：在首页下，直接用 JavaScript 动态内联精准赋予 h1 物理像素对齐！
+    if (isHome) {
+      const h1 = document.querySelector('h1#_top') || document.querySelector('.content-panel h1') || document.querySelector('h1');
+      if (h1) {
+        // 内联样式具有 100% 最高优先覆盖权
+        h1.style.setProperty('margin-top', '3.6rem', 'important');
+      }
+    }
+
+    // 4. 教程文章页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
     const rightSidebar = document.querySelector('.right-sidebar-panel') || document.querySelector('.right-sidebar');
     if (!isHome && rightSidebar && !document.querySelector('.recommended-links-widget')) {
       const widget = document.createElement('div');

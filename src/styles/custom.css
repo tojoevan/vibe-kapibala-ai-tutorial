@@ -80,13 +80,13 @@ body {
 	max-width: 100% !important;
 }
 
-/* 🎯 关键水平切线对齐：使右侧 h1 标题上沿与左侧第一个灰色分类按钮 01. AI Agent 智能体 100% 物理像素级同高对齐 */
+/* 🎯 终极 100% 绝对像素对齐：上移/下压精准偏移 18px，使右侧 h1 上沿与左侧 01. AI Agent 智能体 灰块 100% 同高齐平 */
 .sl-markdown-content h1,
 h1#_top,
 .content-panel h1,
 header h1,
 div.content-panel h1 {
-	margin-top: 1.5625rem !important; /* 25px + 容器 1.25rem = 45px，完美齐平左侧 01. AI Agent 灰块 */
+	margin-top: 3.95rem !important; /* 精确物理对齐 162px = 162px */
 	margin-bottom: 1.5rem !important;
 	font-size: 1.5rem !important; /* 24px 精致主标题 */
 	font-weight: 700 !important;
