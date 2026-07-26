@@ -1,6 +1,6 @@
 # 🦫 Vibe Kapibala AI 教程库 (vibe-kapibala-ai-tutorial)
 
-一个全静态、高性能、零服务器成本、零数据库依赖的 AI 知识与工具学习手册平台。类似于 W3Cschool、菜鸟教程的树状手册结构，专为 AI 开发者与学习者打造。
+一个全静态、高性能、零服务器成本、零数据库依赖的 AI 知识与工具学习手册平台。采用结构化全景分类导航与树状手册结构，专为 AI 开发者与学习者打造。
 
 - 🌐 **在线体验 / 部署平台**: GitHub + Cloudflare Pages (SSG 静态部署)
 - 仓库地址: [https://github.com/tojoevan/vibe-kapibala-ai-tutorial](https://github.com/tojoevan/vibe-kapibala-ai-tutorial)
@@ -35,7 +35,7 @@ vibe-kapibala-ai-tutorial/
 │   │   └── CustomFooter.astro   # 页脚扩展 (挂载评论区)
 │   ├── content/
 │   │   ├── docs/                # 平铺存放的 Markdown 教程
-│   │   │   ├── index.mdx        # 网站首页 (Hero & 分类入口)
+│   │   │   ├── index.mdx        # 网站首页 (全景导航入口)
 │   │   │   ├── cloudflare-github-deploy.md # 快速开始与 Cloudflare 部署教程
 │   │   │   ├── ai-intro.md      # 01. AI 基础知识
 │   │   │   ├── prompt-basic.md  # 02. Prompt 提示词工程
