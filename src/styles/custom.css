@@ -37,15 +37,28 @@ body {
 	color: var(--sl-color-gray-2);
 }
 
-/* 压缩 Starlight 默认 Content 边距 */
+/* 彻底解决 Header 吸顶导致的页面 h1 标题遮挡问题 */
 .main-frame {
-	padding-top: 1rem !important;
-	padding-bottom: 3rem !important;
+	padding-top: 2.25rem !important; /* 增加足够的上边距，防止被顶栏遮挡 */
+	padding-bottom: 3.5rem !important;
 }
 
 .content-panel {
-	padding: 1rem 1.5rem !important;
+	padding: 1.5rem 1.5rem !important;
 	max-width: 100% !important;
+}
+
+/* 强制重置所有页面的 h1 标题，确保绝对不被顶栏遮盖且字号优雅 */
+.sl-markdown-content h1,
+h1#_top,
+.content-panel h1 {
+	margin-top: 1rem !important;
+	margin-bottom: 1.5rem !important;
+	font-size: 1.5rem !important; /* 24px 精致主标题，不撑大遮挡 */
+	font-weight: 700 !important;
+	line-height: 1.3 !important;
+	color: var(--sl-color-white) !important;
+	letter-spacing: -0.02em !important;
 }
 
 /* 标题样式：极简克制 */
