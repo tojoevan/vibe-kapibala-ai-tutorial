@@ -47,7 +47,6 @@ const isAbout = pathname.includes('/about');
     }
 
     // 2. 首页专享：将左侧侧边栏由树状文件目录重构为“全景分类索引”
-    // 隐藏多余的“分类快速导航”小字，使 01. AI Agent 智能体 直接置顶！
     const sidebar = document.querySelector('.sidebar-content') || document.querySelector('starlight-sidebar');
     if (isHome && sidebar && !document.querySelector('.category-sidebar-nav')) {
       const categoryNav = document.createElement('div');
@@ -69,7 +68,7 @@ const isAbout = pathname.includes('/about');
       sidebar.innerHTML = '';
       sidebar.appendChild(categoryNav);
 
-      // 绑定平滑滚动事件
+      // 🎯 核心平滑对齐滚动：带 Header Offset 的精准平滑定位
       const navLinks = categoryNav.querySelectorAll('.category-nav-item');
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -79,7 +78,16 @@ const isAbout = pathname.includes('/about');
           if (targetEl) {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // 算入 Header 吸顶高度 (72px) 与适当间距留白 (16px) ➔ offset = 88px
+            const headerOffset = 88;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
           }
         });
       });

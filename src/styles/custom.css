@@ -61,6 +61,13 @@ dialog[aria-label="Search"] * {
 	--pagefind-ui-border: #334155 !important;
 }
 
+/* 🎯 点击分类锚点跳转时的滚动垂直对齐与 Header 吸顶避让留白 */
+.section-group,
+.section-group-header,
+[id] {
+	scroll-margin-top: 5.5rem !important;
+}
+
 /* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
 body {
 	background-color: var(--sl-color-gray-6);
@@ -80,7 +87,7 @@ body {
 	max-width: 100% !important;
 }
 
-/* 🎯 精确物理测量下压 41px (2.7rem)，使右侧 h1 上沿 (Y=121px) 与左侧 01. AI Agent 灰块上沿 (Y=121px) 100% 垂直平齐 */
+/* 精确物理测量下压 41px (2.7rem)，使右侧 h1 上沿 (Y=121px) 与左侧 01. AI Agent 灰块上沿 (Y=121px) 100% 垂直平齐 */
 .sl-markdown-content h1,
 h1#_top,
 .content-panel h1,
