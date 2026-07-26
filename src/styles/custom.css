@@ -85,21 +85,21 @@ h1#_top,
 }
 
 /* ======================================================== */
-/* 🛠️ 重构 Pagefind / Starlight 搜索弹窗 Modal 独立样式     */
-/* 彻底解决点击搜索后弹窗压缩扭曲、拉伸变质问题            */
+/* 🛠️ 精细化重构 Pagefind 搜索 Modal 弹窗                    */
+/* 消除图标遮挡文字、干掉突兀蓝色、极简精炼排版             */
 /* ======================================================== */
 
-/* 强制独立还原 Modal 弹窗 */
+/* 1. Modal 居中浮层容器 */
 dialog[aria-label="Search"],
 dialog.dialog,
 site-search dialog,
 starlight-search dialog {
 	position: fixed !important;
-	top: 15% !important;
+	top: 12% !important;
 	left: 50% !important;
 	transform: translateX(-50%) !important;
-	width: min(640px, 90vw) !important;
-	max-width: 640px !important;
+	width: min(620px, 92vw) !important;
+	max-width: 620px !important;
 	height: auto !important;
 	max-height: 75vh !important;
 	margin: 0 !important;
@@ -107,60 +107,113 @@ starlight-search dialog {
 	border: 1px solid var(--sl-color-gray-5) !important;
 	background-color: var(--sl-color-gray-6) !important;
 	color: var(--sl-color-white) !important;
-	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+	box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2) !important;
 	z-index: 999999 !important;
 	padding: 1.25rem !important;
 	overflow: hidden !important;
 }
 
-/* 遮罩背景 */
+/* 2. 遮罩背景 */
 dialog::backdrop {
-	background-color: rgba(15, 23, 42, 0.5) !important;
+	background-color: rgba(15, 23, 42, 0.45) !important;
 	backdrop-filter: blur(4px) !important;
 }
 
-/* Pagefind 搜索输入框美化 */
+/* 3. 隐藏 Pagefind 默认多余重叠的 "搜索" label 标签 */
+.pagefind-ui__form label,
+.pagefind-ui__search-label {
+	display: none !important;
+}
+
+.pagefind-ui__form {
+	position: relative !important;
+	width: 100% !important;
+}
+
+/* 4. 输入框样式：充足 padding-left 防文字遮挡 + 哑光灰聚焦（无突兀蓝色） */
 .pagefind-ui__search-input {
 	width: 100% !important;
-	height: 2.75rem !important;
-	font-size: 0.9375rem !important;
+	height: 2.6rem !important;
+	font-size: 0.875rem !important;
 	background-color: var(--sl-color-gray-5) !important;
 	color: var(--sl-color-white) !important;
 	border: 1px solid var(--sl-color-gray-4) !important;
 	border-radius: 0.5rem !important;
-	padding: 0.5rem 1rem !important;
+	padding: 0.4rem 2.2rem 0.4rem 2.5rem !important; /* 2.5rem 避免左侧图标遮挡文字 */
 	box-sizing: border-box !important;
+	transition: all 0.15s ease !important;
 }
 
-.pagefind-ui__search-input:focus {
-	outline: 2px solid var(--sl-color-accent) !important;
-	border-color: transparent !important;
+.pagefind-ui__search-input:focus,
+.pagefind-ui__search-input:focus-visible {
+	outline: none !important;
+	border-color: var(--sl-color-accent) !important; /* 优雅哑光冷灰，绝无蓝色 */
+	box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15) !important;
 }
 
-/* 搜索结果列表容器 */
+/* 5. 清除按钮 (X) 样式：去除突兀蓝色 */
+.pagefind-ui__search-clear {
+	color: var(--sl-color-gray-3) !important;
+	background: transparent !important;
+	border-radius: 0.25rem !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	height: 1.5rem !important;
+	padding: 0 0.5rem !important;
+}
+
+.pagefind-ui__search-clear:hover {
+	color: var(--sl-color-white) !important;
+	background-color: rgba(100, 116, 139, 0.15) !important;
+}
+
+/* 6. 搜索结果精炼排版 */
 .pagefind-ui__drawer {
 	max-height: 55vh !important;
 	overflow-y: auto !important;
-	margin-top: 1rem !important;
+	margin-top: 0.85rem !important;
 	padding-right: 0.25rem !important;
 }
 
+.pagefind-ui__message {
+	font-size: 0.8125rem !important;
+	color: var(--sl-color-gray-3) !important;
+	padding: 0.4rem 0 !important;
+	margin-bottom: 0.5rem !important;
+}
+
 .pagefind-ui__result {
-	padding: 0.75rem 0 !important;
+	padding: 0.65rem 0.75rem !important;
+	border-radius: 0.375rem !important;
 	border-bottom: 1px solid var(--sl-color-gray-5) !important;
+	transition: background-color 0.15s ease !important;
+}
+
+.pagefind-ui__result:hover {
+	background-color: var(--sl-color-gray-5) !important;
 }
 
 .pagefind-ui__result-link {
-	font-size: 0.9375rem !important;
+	font-size: 0.875rem !important; /* 14px 提效精练 */
 	font-weight: 600 !important;
 	color: var(--sl-color-white) !important;
 	text-decoration: none !important;
 }
 
 .pagefind-ui__result-excerpt {
-	font-size: 0.8125rem !important;
+	font-size: 0.8125rem !important; /* 13px */
 	color: var(--sl-color-gray-3) !important;
-	margin-top: 0.25rem !important;
+	margin-top: 0.2rem !important;
+	line-height: 1.4 !important;
+}
+
+/* 7. 匹配关键词 mark 强调高亮：柔和灰背景，拒绝强刺激黄色/蓝色 */
+.pagefind-ui mark {
+	background-color: rgba(100, 116, 139, 0.18) !important;
+	color: var(--sl-color-white) !important;
+	font-weight: 600 !important;
+	padding: 0.05rem 0.25rem !important;
+	border-radius: 0.2rem !important;
 }
 
 /* 首页主容器 */
