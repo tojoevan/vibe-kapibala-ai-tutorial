@@ -12,6 +12,15 @@
 	--sl-color-gray-5: #e2e8f0; /* 超淡微灰边框 */
 	--sl-color-gray-6: #ffffff; /* 纯白背景 */
 	--sl-color-black: #ffffff;
+
+	/* 🛠️ 彻底消灭 Pagefind 默认蓝色变量，重置为高档哑光冷灰与微浅灰 */
+	--pagefind-ui-primary: #0f172a !important;
+	--pagefind-ui-text: #0f172a !important;
+	--pagefind-ui-background: #ffffff !important;
+	--pagefind-ui-border: #e2e8f0 !important; /* 彻底消灭蓝色！ */
+	--pagefind-ui-border-width: 1px !important;
+	--pagefind-ui-border-radius: 0.5rem !important;
+	--pagefind-ui-font: inherit !important;
 }
 
 :root[data-theme='dark'] {
@@ -27,6 +36,12 @@
 	--sl-color-gray-5: #1e293b;
 	--sl-color-gray-6: #0f172a;
 	--sl-color-black: #080b12;
+
+	/* 深色模式下的 Pagefind CSS 变量重置 */
+	--pagefind-ui-primary: #f8fafc !important;
+	--pagefind-ui-text: #f8fafc !important;
+	--pagefind-ui-background: #0f172a !important;
+	--pagefind-ui-border: #1e293b !important; /* 哑光石墨灰，消灭蓝色 */
 }
 
 /* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
@@ -105,7 +120,7 @@ starlight-search dialog {
 	max-height: 75vh !important;
 	margin: 0 !important;
 	border-radius: 0.75rem !important;
-	border: 1px solid var(--sl-color-gray-5) !important;
+	border: 1px solid var(--pagefind-ui-border) !important;
 	background-color: var(--sl-color-gray-6) !important;
 	color: var(--sl-color-white) !important;
 	box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2) !important;
@@ -149,7 +164,7 @@ dialog::backdrop {
 	font-size: 0.875rem !important;
 	background-color: var(--sl-color-gray-5) !important;
 	color: var(--sl-color-white) !important;
-	border: 1px solid var(--sl-color-gray-4) !important;
+	border: 1px solid var(--pagefind-ui-border) !important;
 	border-radius: 0.5rem !important;
 	padding: 0.4rem 2.2rem 0.4rem 2.5rem !important; /* 2.5rem 避免左侧图标遮挡文字 */
 	box-sizing: border-box !important;
@@ -197,7 +212,7 @@ dialog::backdrop {
 .pagefind-ui__result {
 	padding: 0.65rem 0.75rem !important;
 	border-radius: 0.375rem !important;
-	border-bottom: 1px solid var(--sl-color-gray-5) !important;
+	border-bottom: 1px solid var(--pagefind-ui-border) !important;
 	transition: background-color 0.15s ease !important;
 }
 
