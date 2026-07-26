@@ -11,12 +11,10 @@ const isAbout = pathname.includes('/about');
 </div>
 
 <script>
-  function reorganizeHeader() {
+  function injectTopMenu() {
     const siteTitle = document.querySelector('.site-title');
-    const headerFlexRight = document.querySelector('.header .sl-flex.print\\:hidden') || document.querySelector('.header .sl-flex:last-child');
-    const siteSearch = document.querySelector('site-search') || document.querySelector('.search-container') || document.querySelector('starlight-search');
-
-    // 1. 注入内联顶层菜单在 SiteTitle 右侧
+    
+    // 注入内联顶层菜单在 SiteTitle 右侧
     if (siteTitle && !document.querySelector('.top-nav-inline-injected')) {
       const nav = document.createElement('nav');
       nav.className = 'top-nav-inline-injected';
@@ -46,15 +44,10 @@ const isAbout = pathname.includes('/about');
 
       siteTitle.after(nav);
     }
-
-    // 2. 将加宽后的搜索框移动至右侧容器最右端
-    if (headerFlexRight && siteSearch && siteSearch.parentElement !== headerFlexRight) {
-      headerFlexRight.appendChild(siteSearch);
-    }
   }
 
-  reorganizeHeader();
-  document.addEventListener('astro:page-load', reorganizeHeader);
+  injectTopMenu();
+  document.addEventListener('astro:page-load', injectTopMenu);
 </script>
 
 <style is:global>
@@ -62,7 +55,7 @@ const isAbout = pathname.includes('/about');
     width: 100%;
   }
 
-  /* Header 弹性分布：左侧标题+菜单，右侧按钮+搜索框 */
+  /* Header 弹性分布：左侧标题+菜单，右侧语言/深浅/搜索按钮 */
   .header {
     display: flex !important;
     align-items: center !important;
@@ -114,26 +107,12 @@ const isAbout = pathname.includes('/about');
     opacity: 0.75;
   }
 
-  /* 右侧操作区 (包含语言选择、深浅模式与加宽搜索框) 统一右对齐 */
-  .header .sl-flex.print\:hidden,
-  .header .sl-flex:last-child {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-    margin-left: auto !important;
-  }
-
-  /* 加宽搜索框，避免过窄 */
-  site-search,
-  starlight-search {
+  /* 仅调整搜索触发按钮 (Search Trigger Button) 的加宽样式，绝不污染弹窗 Modal 宽度 */
+  site-search button[data-open-modal],
+  starlight-search button[data-open-modal],
+  site-search > button,
+  starlight-search > button {
     width: 220px !important;
-    min-width: 200px !important;
-    order: 999 !important; /* 强制排在最右侧 */
-  }
-
-  site-search button,
-  starlight-search button {
-    width: 100% !important;
     justify-content: space-between !important;
   }
 </style>

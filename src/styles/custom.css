@@ -37,7 +37,7 @@ body {
 	color: var(--sl-color-gray-2);
 }
 
-/* 压缩 Starlight 默认 Content 边距 */
+/* 彻底解决 Header 吸顶导致的页面 h1 标题遮挡问题 */
 .main-frame {
 	padding-top: 2.25rem !important; /* 增加足够的上边距，防止被顶栏遮挡 */
 	padding-bottom: 3.5rem !important;
@@ -82,6 +82,85 @@ h1#_top,
 /* 深色模式下的手写 K Logo 自动反色兼容 */
 :root[data-theme='dark'] .site-title img {
 	filter: invert(1) brightness(1.2);
+}
+
+/* ======================================================== */
+/* 🛠️ 重构 Pagefind / Starlight 搜索弹窗 Modal 独立样式     */
+/* 彻底解决点击搜索后弹窗压缩扭曲、拉伸变质问题            */
+/* ======================================================== */
+
+/* 强制独立还原 Modal 弹窗 */
+dialog[aria-label="Search"],
+dialog.dialog,
+site-search dialog,
+starlight-search dialog {
+	position: fixed !important;
+	top: 15% !important;
+	left: 50% !important;
+	transform: translateX(-50%) !important;
+	width: min(640px, 90vw) !important;
+	max-width: 640px !important;
+	height: auto !important;
+	max-height: 75vh !important;
+	margin: 0 !important;
+	border-radius: 0.75rem !important;
+	border: 1px solid var(--sl-color-gray-5) !important;
+	background-color: var(--sl-color-gray-6) !important;
+	color: var(--sl-color-white) !important;
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+	z-index: 999999 !important;
+	padding: 1.25rem !important;
+	overflow: hidden !important;
+}
+
+/* 遮罩背景 */
+dialog::backdrop {
+	background-color: rgba(15, 23, 42, 0.5) !important;
+	backdrop-filter: blur(4px) !important;
+}
+
+/* Pagefind 搜索输入框美化 */
+.pagefind-ui__search-input {
+	width: 100% !important;
+	height: 2.75rem !important;
+	font-size: 0.9375rem !important;
+	background-color: var(--sl-color-gray-5) !important;
+	color: var(--sl-color-white) !important;
+	border: 1px solid var(--sl-color-gray-4) !important;
+	border-radius: 0.5rem !important;
+	padding: 0.5rem 1rem !important;
+	box-sizing: border-box !important;
+}
+
+.pagefind-ui__search-input:focus {
+	outline: 2px solid var(--sl-color-accent) !important;
+	border-color: transparent !important;
+}
+
+/* 搜索结果列表容器 */
+.pagefind-ui__drawer {
+	max-height: 55vh !important;
+	overflow-y: auto !important;
+	margin-top: 1rem !important;
+	padding-right: 0.25rem !important;
+}
+
+.pagefind-ui__result {
+	padding: 0.75rem 0 !important;
+	border-bottom: 1px solid var(--sl-color-gray-5) !important;
+}
+
+.pagefind-ui__result-link {
+	font-size: 0.9375rem !important;
+	font-weight: 600 !important;
+	color: var(--sl-color-white) !important;
+	text-decoration: none !important;
+}
+
+.pagefind-ui__result-excerpt {
+	font-size: 0.8125rem !important;
+	color: var(--sl-color-gray-3) !important;
+	margin-top: 0.25rem !important;
 }
 
 /* 首页主容器 */
