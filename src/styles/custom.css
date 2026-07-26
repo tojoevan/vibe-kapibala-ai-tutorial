@@ -17,7 +17,7 @@
 	--pagefind-ui-primary: #0f172a !important;
 	--pagefind-ui-text: #0f172a !important;
 	--pagefind-ui-background: #ffffff !important;
-	--pagefind-ui-border: #e2e8f0 !important; /* 彻底消灭蓝色！ */
+	--pagefind-ui-border: #cbd5e1 !important; /* 彻底消灭蓝色！ */
 	--pagefind-ui-border-width: 1px !important;
 	--pagefind-ui-border-radius: 0.5rem !important;
 	--pagefind-ui-font: inherit !important;
@@ -41,7 +41,7 @@
 	--pagefind-ui-primary: #f8fafc !important;
 	--pagefind-ui-text: #f8fafc !important;
 	--pagefind-ui-background: #0f172a !important;
-	--pagefind-ui-border: #1e293b !important; /* 哑光石墨灰，消灭蓝色 */
+	--pagefind-ui-border: #334155 !important; /* 哑光石墨灰，消灭蓝色 */
 }
 
 /* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
@@ -155,27 +155,40 @@ dialog::backdrop {
 .pagefind-ui__form {
 	position: relative !important;
 	width: 100% !important;
+	display: flex !important;
+	align-items: center !important;
 }
 
-/* 4. 输入框样式：充足 padding-left 防文字遮挡 + 哑光灰聚焦（无突兀蓝色） */
+/* 放大镜图标绝对垂直居中对齐 */
+.pagefind-ui__form::before {
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	margin-top: 0 !important;
+	opacity: 0.65 !important;
+	pointer-events: none !important;
+}
+
+/* 4. 输入框样式：充足 padding-left 防文字遮挡 + 哑光灰聚焦（彻底消除蓝色边框） */
 .pagefind-ui__search-input {
 	width: 100% !important;
 	height: 2.6rem !important;
 	font-size: 0.875rem !important;
 	background-color: var(--sl-color-gray-5) !important;
 	color: var(--sl-color-white) !important;
-	border: 1px solid var(--pagefind-ui-border) !important;
+	border: 1px solid var(--sl-color-gray-4) !important;
 	border-radius: 0.5rem !important;
 	padding: 0.4rem 2.2rem 0.4rem 2.5rem !important; /* 2.5rem 避免左侧图标遮挡文字 */
 	box-sizing: border-box !important;
 	transition: all 0.15s ease !important;
 }
 
+/* 彻底消除蓝色聚焦高亮框与外边框，替换为极其精致的哑光冷灰 */
 .pagefind-ui__search-input:focus,
-.pagefind-ui__search-input:focus-visible {
+.pagefind-ui__search-input:focus-visible,
+.pagefind-ui__search-input:active {
 	outline: none !important;
-	border-color: var(--sl-color-accent) !important; /* 优雅哑光冷灰，绝无蓝色 */
-	box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.15) !important;
+	border-color: var(--sl-color-accent) !important; /* 优雅哑光冷灰 */
+	box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2) !important;
 }
 
 /* 5. 清除按钮 (X) 样式：去除突兀蓝色 */
