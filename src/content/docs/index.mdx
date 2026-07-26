@@ -1,173 +1,191 @@
 ---
-title: AI 资料与工具全景速查手册
-description: 专注 AI 领域的极简高密度速查手册与资料导航
+title: AI 资料与工具全景手册
+description: 专注 AI 领域的极简空间感速查手册与资料导航
 ---
 
-<div class="section-block">
-  <div class="section-title-bar">
-    <span>AI / 智能开发核心资料库</span>
-  </div>
+<div class="layout-with-sidebar">
+  {/* 左侧分类目录快速锚点/选择 (Left Category Filter Sidebar) */}
+  <aside class="cat-sidebar">
+    <div class="cat-menu-title">分类索引</div>
+    <ul class="cat-menu-list">
+      <li><a href="#ai-core" class="cat-menu-link active">智能开发核心</a></li>
+      <li><a href="#prompt-eng" class="cat-menu-link">提示词工程</a></li>
+      <li><a href="#agents-frameworks" class="cat-menu-link">Agent 与框架</a></li>
+      <li><a href="#ai-tools" class="cat-menu-link">AI 工具与软件</a></li>
+      <li><a href="#site-info" class="cat-menu-link">部署与站务</a></li>
+    </ul>
+  </aside>
 
-  <div class="grid-3col">
-    {/* 卡片 1: AI Agent 智能体 */}
-    <a href="/llm-agent-overview/" class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-          <circle cx="12" cy="5" r="2"></circle>
-          <path d="M12 7v4"></path>
-          <line x1="8" y1="16" x2="8.01" y2="16"></line>
-          <line x1="16" y1="16" x2="16.01" y2="16"></line>
-        </svg>
+  {/* 右侧主资料卡片区域 (Right Main Content Area) */}
+  <main class="cat-main-content">
+    {/* 分区 1: 智能开发核心 */}
+    <section id="ai-core" class="section-group">
+      <div class="section-group-header">
+        <span>智能开发核心</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【AI Agent (智能体)】</h3>
-        <p class="card-desc">AI Agent 让模型不只回答问题，而是按步骤自主完成动作。</p>
-      </div>
-      <span class="card-badge badge-new">已上线</span>
-    </a>
 
-    {/* 卡片 2: AI 入门与大模型基础 */}
-    <a href="/ai-intro/" class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
-          <path d="M12 6v6l4 2"></path>
-        </svg>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">【AI (人工智能基础)】</h3>
-        <p class="card-desc">深入理解 LLM 基础概念、Token 词元与上下文窗口。</p>
-      </div>
-      <span class="card-badge badge-new">已上线</span>
-    </a>
+      <div class="spacious-grid">
+        {/* 卡片 1: AI Agent 智能体 */}
+        <a href="/llm-agent-overview/" class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                <circle cx="12" cy="5" r="2"></circle>
+                <path d="M12 7v4"></path>
+              </svg>
+              <span class="logo-text">AI Agent</span>
+            </div>
+            <span class="status-tag tag-active">已上线</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">自主智能体架构与工作流</h3>
+            <p class="apple-card-desc">理解规划、记忆与工具调用，让模型按步骤自主完成任务。</p>
+          </div>
+        </a>
 
-    {/* 卡片 3: Prompt 工程设计 */}
-    <a href="/prompt-basic/" class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-        </svg>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">【Prompt 提示词工程】</h3>
-        <p class="card-desc">掌握 Role-Task 结构化提示词与 CoT 思维链设计。</p>
-      </div>
-      <span class="card-badge badge-new">已上线</span>
-    </a>
+        {/* 卡片 2: AI 基础 */}
+        <a href="/ai-intro/" class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a10 10 0 1 0 10 10"></path>
+              </svg>
+              <span class="logo-text">LLM 原理</span>
+            </div>
+            <span class="status-tag tag-active">已上线</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">大语言模型基础与 Token</h3>
+            <p class="apple-card-desc">深入解析词元切分、上下文窗口与 Transformer 自注意力机制。</p>
+          </div>
+        </a>
 
-    {/* 卡片 4: GitHub + Cloudflare 部署 */}
-    <a href="/cloudflare-github-deploy/" class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-        </svg>
+        {/* 卡片 3: Prompt 工程 */}
+        <a href="/prompt-basic/" class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <span class="logo-text">Prompt</span>
+            </div>
+            <span class="status-tag tag-active">已上线</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">提示词核心技巧与结构</h3>
+            <p class="apple-card-desc">掌握 Role-Task 结构设计与思维链推理控制。</p>
+          </div>
+        </a>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【全静态无服务器部署】</h3>
-        <p class="card-desc">教你在 Cloudflare Pages 零成本发布全静态网站。</p>
-      </div>
-      <span class="card-badge badge-new">已上线</span>
-    </a>
+    </section>
 
-    {/* 卡片 5: Vibe Coding 全新开发方式 */}
-    <div class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
+    {/* 分区 2: AI 工具与软件 */}
+    <section id="ai-tools" class="section-group">
+      <div class="section-group-header">
+        <span>AI 工具与软件</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【学习 Vibe Coding】</h3>
-        <p class="card-desc">Vibe Coding 是人与 AI 协作研发的全新软件开发方式。</p>
-      </div>
-      <span class="card-badge badge-plan">规划中</span>
-    </div>
 
-    {/* 卡片 6: Claude Code AI 编程 */}
-    <div class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 17l6-6-6-6"></path>
-          <line x1="12" y1="19" x2="20" y2="19"></line>
-        </svg>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">【Claude Code】</h3>
-        <p class="card-desc">Anthropic 推出的 Terminal 极速 AI 编程协作工具。</p>
-      </div>
-      <span class="card-badge badge-plan">规划中</span>
-    </div>
+      <div class="spacious-grid">
+        {/* 卡片 4: Ollama */}
+        <div class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+              </svg>
+              <span class="logo-text">Ollama</span>
+            </div>
+            <span class="status-tag tag-plan">规划中</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">本地大语言模型运行</h3>
+            <p class="apple-card-desc">快速本地部署轻量与高能开源模型。</p>
+          </div>
+        </div>
 
-    {/* 卡片 7: 学习 Ollama 本地模型 */}
-    <div class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-          <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-          <line x1="6" y1="6" x2="6.01" y2="6"></line>
-          <line x1="6" y1="18" x2="6.01" y2="18"></line>
-        </svg>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">【学习 Ollama】</h3>
-        <p class="card-desc">开源本地大语言模型快速运行与部署框架。</p>
-      </div>
-      <span class="card-badge badge-plan">规划中</span>
-    </div>
+        {/* 卡片 5: Claude Code */}
+        <div class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+              <span class="logo-text">Claude Code</span>
+            </div>
+            <span class="status-tag tag-plan">规划中</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">Terminal 极速编程助手</h3>
+            <p class="apple-card-desc">命令行环境下的智能化软件研发提效工具。</p>
+          </div>
+        </div>
 
-    {/* 卡片 8: Function Calling 工具调用 */}
-    <div class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-        </svg>
+        {/* 卡片 6: Vibe Coding */}
+        <div class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span class="logo-text">Vibe Coding</span>
+            </div>
+            <span class="status-tag tag-plan">规划中</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">人机协作研发新范式</h3>
+            <p class="apple-card-desc">面向 AI 时代的全新敏捷软件开发习惯。</p>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【Function Calling】</h3>
-        <p class="card-desc">让大语言模型连接外部 API 与数据库实现智能调用。</p>
-      </div>
-      <span class="card-badge badge-plan">规划中</span>
-    </div>
+    </section>
 
-    {/* 卡片 9: RAG 检索增强生成 */}
-    <div class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-        </svg>
+    {/* 分区 3: 部署与站务 */}
+    <section id="site-info" class="section-group">
+      <div class="section-group-header">
+        <span>部署与站务</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【RAG 知识库检索】</h3>
-        <p class="card-desc">结合向量嵌入与私有知识库构建精准对话系统。</p>
-      </div>
-      <span class="card-badge badge-plan">规划中</span>
-    </div>
-  </div>
-</div>
 
-<div class="section-block">
-  <div class="section-title-bar">
-    <span>站务与关于</span>
-  </div>
+      <div class="spacious-grid">
+        <a href="/cloudflare-github-deploy/" class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              <span class="logo-text">Cloudflare</span>
+            </div>
+            <span class="status-tag tag-active">已上线</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">全静态无服务器 Pages 部署</h3>
+            <p class="apple-card-desc">GitHub 提交全自动增量构建与发布。</p>
+          </div>
+        </a>
 
-  <div class="grid-3col">
-    <a href="/about/" class="card-item">
-      <div class="card-icon-svg">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
+        <a href="/about/" class="apple-card">
+          <div class="apple-card-top">
+            <div class="logo-container">
+              <svg class="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span class="logo-text">About</span>
+            </div>
+            <span class="status-tag tag-active">说明</span>
+          </div>
+          <div>
+            <h3 class="apple-card-title">关于本站与设计理念</h3>
+            <p class="apple-card-desc">零数据库开销机制与 Pagefind 检索。</p>
+          </div>
+        </a>
       </div>
-      <div class="card-body">
-        <h3 class="card-title">【关于本站 (About)】</h3>
-        <p class="card-desc">了解网站设计初衷、零数据库限制优化与 Pagefind 全文检索。</p>
-      </div>
-      <span class="card-badge badge-new">说明</span>
-    </a>
-  </div>
+    </section>
+  </main>
 </div>
