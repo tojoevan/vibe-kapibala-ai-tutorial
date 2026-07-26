@@ -1,0 +1,17 @@
+{
+  "name": "vibe-kapibala-ai-tutorial",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "极速、全静态、零数据库开销的 AI 学习教程网站 (GitHub + Cloudflare Pages)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.32.0",
+    "astro": "^5.0.0"
+  }
+}

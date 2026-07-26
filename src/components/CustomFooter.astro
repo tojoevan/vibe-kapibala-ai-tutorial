@@ -1,0 +1,11 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+import Comment from './Comment.astro';
+
+// 判断当前页面是否为首页 (首页可不装载评论区)
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '/zh-cn/' || Astro.url.pathname === '/zh-cn';
+---
+
+<Default {...Astro.props}><slot /></Default>
+
+{!isHomepage && <Comment />}

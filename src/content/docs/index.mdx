@@ -1,0 +1,46 @@
+---
+title: Vibe Kapibala AI 教程库
+description: 极速、全静态、无数据库限制的 AI 知识与工具学习手册
+template: splash
+hero:
+  tagline: 专为 AI 开发者与学习者打造的手册式学习平台。基于 GitHub + Cloudflare Pages 部署，全静态零开销。
+  actions:
+    - text: 立即开始学习
+      link: /cloudflare-github-deploy/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub 仓库
+      link: https://github.com
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## ⚡️ 平台核心特色
+
+<CardGrid stagger>
+  <Card title="🚀 极致性能与零数据库开销" icon="rocket">
+    全静态 (SSG) 构建，100% 打满 Cloudflare Edge CDN。零 Worker / D1 数据库调用，不受任何免费额度与 API 限制。
+  </Card>
+
+  <Card title="📁 平铺极简 Markdown 结构" icon="open-book">
+    所有教程文件统一存放于 `docs/` 单层目录下。新增文章只需向 GitHub 推送单个文件，侧边栏分类全由配置文件动态驱动。
+  </Card>
+
+  <Card title="🔍 纯静态离线全文检索" icon="magnifier">
+    构建时离线生成 Pagefind 索引，前端搜索无需服务器，毫秒级响应，支持快捷键 Ctrl+K 查阅知识点。
+  </Card>
+
+  <Card title="💬 GitHub Discussions 章节留言" icon="comment">
+    整合 Giscus 评论组件，读者留言与勘误建议自动同步保存至 GitHub Discussions，随时在线回复跟进。
+  </Card>
+</CardGrid>
+
+---
+
+## 📚 教程分类直达
+
+- **[🚀 快速开始与部署](/cloudflare-github-deploy/)**：了解 GitHub 协作与 Cloudflare Pages 自动化渲染配置。
+- **[🧠 AI 基础知识](/ai-intro/)**：掌握大语言模型 (LLM)、Token、上下文窗口与 Transformer 核心机制。
+- **[🎯 Prompt 提示词工程](/prompt-basic/)**：从零编写高效 Prompt，掌握 Structuring、Few-Shot 与 CoT 链式思考。
+- **[🤖 Agent 智能体与框架](/llm-agent-overview/)**：深度解析 AI Agent 架构体系与 LLM 自动化工作流。

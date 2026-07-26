@@ -1,0 +1,52 @@
+/* 自定义主题色彩与 CSS 增强 */
+:root {
+	--sl-color-accent-low: #1e1b4b;
+	--sl-color-accent: #6366f1;
+	--sl-color-accent-high: #a5b4fc;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #f3f4f6;
+	--sl-color-gray-2: #e5e7eb;
+	--sl-color-gray-3: #9ca3af;
+	--sl-color-gray-4: #4b5563;
+	--sl-color-gray-5: #1f2937;
+	--sl-color-gray-6: #111827;
+	--sl-color-black: #0b0f19;
+}
+
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #312e81;
+	--sl-color-accent: #818cf8;
+	--sl-color-accent-high: #c7d2fe;
+}
+
+/* 顶部导航与侧边栏高亮特效 */
+.site-title {
+	font-weight: 800;
+	letter-spacing: -0.025em;
+	background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* 评论区面板面板美化 */
+.giscus-wrapper {
+	margin-top: 3rem;
+	padding-top: 2rem;
+	border-top: 1px solid var(--sl-color-gray-5);
+}
+
+.giscus-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--sl-color-white);
+}
+
+.giscus-tip {
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+	margin-bottom: 1.5rem;
+}
