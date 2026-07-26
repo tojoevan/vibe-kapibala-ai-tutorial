@@ -29,15 +29,15 @@
 	--sl-color-black: #080b12;
 }
 
-/* 全局背景微调 */
+/* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
 body {
 	background-color: var(--sl-color-gray-6);
-	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 	font-size: 0.875rem; /* 14px 优雅主字号 */
 	color: var(--sl-color-gray-2);
 }
 
-/* 彻底解决 Header 吸顶导致的页面 h1 标题遮挡问题 */
+/* 压缩 Starlight 默认 Content 边距 */
 .main-frame {
 	padding-top: 2.25rem !important; /* 增加足够的上边距，防止被顶栏遮挡 */
 	padding-bottom: 3.5rem !important;
@@ -61,12 +61,27 @@ h1#_top,
 	letter-spacing: -0.02em !important;
 }
 
-/* 标题样式：极简克制 */
+/* 标题与花体 K Logo 样式 */
 .site-title {
 	font-weight: 600;
 	font-size: 1rem !important;
 	letter-spacing: -0.01em;
 	color: var(--sl-color-white) !important;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.site-title img {
+	height: 1.6rem !important;
+	width: auto !important;
+	object-fit: contain;
+	transition: filter 0.2s ease;
+}
+
+/* 深色模式下的手写 K Logo 自动反色兼容 */
+:root[data-theme='dark'] .site-title img {
+	filter: invert(1) brightness(1.2);
 }
 
 /* 首页主容器 */

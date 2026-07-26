@@ -6,6 +6,11 @@ export default defineConfig({
     starlight({
       title: 'Vibe Kapibala AI 教程网',
       description: '全静态、低饱和度极简手册风格 AI 学习与工具速查手册',
+      logo: {
+        src: './public/logo.png',
+        alt: 'Vibe Kapibala AI Logo',
+        replacesTitle: false,
+      },
       defaultLocale: 'zh-CN',
       locales: {
         'zh-CN': {
