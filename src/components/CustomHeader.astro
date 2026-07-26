@@ -6,59 +6,71 @@ const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-c
 const isAbout = pathname.includes('/about');
 ---
 
-<div class="header-override-container">
+<div class="custom-header-shell">
   <Default {...Astro.props}><slot /></Default>
-  
-  <!-- 顶层主菜单 (内联在标题右侧，使用纯极简矢量 Icon) -->
-  <nav class="top-nav-inline" aria-label="主页顶层菜单">
-    <a href="/" class:list={['top-nav-link', { active: isHome }]}>
-      <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-      </svg>
-      首页
-    </a>
-    <a href="/about/" class:list={['top-nav-link', { active: isAbout }]}>
-      <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="16" x2="12" y2="12"></line>
-        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-      </svg>
-      关于
-    </a>
-  </nav>
 </div>
 
-<style>
-  .header-override-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    position: relative;
+<script>
+  // 动态将顶层菜单优雅插入到 SiteTitle 节点右侧，避免绝对定位导致的错位挤压
+  function injectTopMenu() {
+    const siteTitle = document.querySelector('.site-title');
+    if (!siteTitle || document.querySelector('.top-nav-inline-injected')) return;
+
+    const nav = document.createElement('nav');
+    nav.className = 'top-nav-inline-injected';
+    nav.setAttribute('aria-label', '主页顶层菜单');
+
+    const pathname = window.location.pathname;
+    const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-cn';
+    const isAbout = pathname.includes('/about');
+
+    nav.innerHTML = `
+      <a href="/" class="top-nav-link ${isHome ? 'active' : ''}">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        首页
+      </a>
+      <a href="/about/" class="top-nav-link ${isAbout ? 'active' : ''}">
+        <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        关于
+      </a>
+    `;
+
+    siteTitle.after(nav);
   }
 
-  .header-override-container :global(.header) {
+  injectTopMenu();
+  document.addEventListener('astro:page-load', injectTopMenu);
+</script>
+
+<style is:global>
+  .custom-header-shell {
     width: 100%;
   }
 
-  .top-nav-inline {
-    position: absolute;
-    left: 230px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
+  /* 顶层主菜单内联注入在 SiteTitle 右侧 */
+  .top-nav-inline-injected {
+    display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    z-index: 10;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    flex-shrink: 0;
   }
 
   @media (max-width: 768px) {
-    .top-nav-inline {
+    .top-nav-inline-injected {
       display: none;
     }
   }
 
-  .top-nav-link {
+  .top-nav-inline-injected .top-nav-link {
     font-size: 0.825rem;
     font-weight: 500;
     padding: 0.2rem 0.55rem;
@@ -71,18 +83,18 @@ const isAbout = pathname.includes('/about');
     transition: all 0.15s ease;
   }
 
-  .top-nav-link:hover {
+  .top-nav-inline-injected .top-nav-link:hover {
     color: var(--sl-color-white);
     background-color: var(--sl-color-gray-5);
   }
 
-  .top-nav-link.active {
+  .top-nav-inline-injected .top-nav-link.active {
     color: var(--sl-color-white);
     background-color: var(--sl-color-gray-5);
     font-weight: 600;
   }
 
-  .nav-svg-icon {
+  .top-nav-inline-injected .nav-svg-icon {
     opacity: 0.75;
   }
 </style>
