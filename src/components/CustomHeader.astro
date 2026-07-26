@@ -11,42 +11,53 @@ const isAbout = pathname.includes('/about');
 </div>
 
 <script>
-  // 动态将顶层菜单优雅插入到 SiteTitle 节点右侧，避免绝对定位导致的错位挤压
-  function injectTopMenu() {
+  // 全局统一 Header 排版：
+  // 1. 将【首页/关于】内联贴在网站标题右边
+  // 2. 将【搜索框】统一移至 Header 最右端 (Language/Theme 切换按钮的右侧)
+  function reorganizeHeader() {
     const siteTitle = document.querySelector('.site-title');
-    if (!siteTitle || document.querySelector('.top-nav-inline-injected')) return;
+    const headerFlexRight = document.querySelector('.header .sl-flex.print\\:hidden') || document.querySelector('.header .sl-flex:last-child');
+    const siteSearch = document.querySelector('site-search') || document.querySelector('.search-container') || document.querySelector('starlight-search');
 
-    const nav = document.createElement('nav');
-    nav.className = 'top-nav-inline-injected';
-    nav.setAttribute('aria-label', '主页顶层菜单');
+    // 1. 注入内联顶层菜单
+    if (siteTitle && !document.querySelector('.top-nav-inline-injected')) {
+      const nav = document.createElement('nav');
+      nav.className = 'top-nav-inline-injected';
+      nav.setAttribute('aria-label', '主页顶层菜单');
 
-    const pathname = window.location.pathname;
-    const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-cn';
-    const isAbout = pathname.includes('/about');
+      const pathname = window.location.pathname;
+      const isHome = pathname === '/' || pathname === '/zh-cn/' || pathname === '/zh-cn';
+      const isAbout = pathname.includes('/about');
 
-    nav.innerHTML = `
-      <a href="/" class="top-nav-link ${isHome ? 'active' : ''}">
-        <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        首页
-      </a>
-      <a href="/about/" class="top-nav-link ${isAbout ? 'active' : ''}">
-        <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-        关于
-      </a>
-    `;
+      nav.innerHTML = `
+        <a href="/" class="top-nav-link ${isHome ? 'active' : ''}">
+          <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          首页
+        </a>
+        <a href="/about/" class="top-nav-link ${isAbout ? 'active' : ''}">
+          <svg class="nav-svg-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          关于
+        </a>
+      `;
 
-    siteTitle.after(nav);
+      siteTitle.after(nav);
+    }
+
+    // 2. 将搜索框移至右端容器最右侧
+    if (headerFlexRight && siteSearch && siteSearch.parentElement !== headerFlexRight) {
+      headerFlexRight.appendChild(siteSearch);
+    }
   }
 
-  injectTopMenu();
-  document.addEventListener('astro:page-load', injectTopMenu);
+  reorganizeHeader();
+  document.addEventListener('astro:page-load', reorganizeHeader);
 </script>
 
 <style is:global>
@@ -54,13 +65,21 @@ const isAbout = pathname.includes('/about');
     width: 100%;
   }
 
+  /* 统一 Header 全局 Flex 排版 */
+  .header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 1.5rem !important;
+  }
+
   /* 顶层主菜单内联注入在 SiteTitle 右侧 */
   .top-nav-inline-injected {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     flex-shrink: 0;
   }
 
@@ -96,5 +115,12 @@ const isAbout = pathname.includes('/about');
 
   .top-nav-inline-injected .nav-svg-icon {
     opacity: 0.75;
+  }
+
+  /* 强制将搜索框在右侧容器中最右端显示 */
+  site-search,
+  starlight-search {
+    margin-left: 0.75rem !important;
+    order: 999 !important;
   }
 </style>
