@@ -12,13 +12,13 @@ export default defineConfig({
         alt: '卡皮教程 Logo',
         replacesTitle: false,
       },
-      defaultLocale: 'zh-CN',
+      defaultLocale: 'root',
       locales: {
-        'zh-CN': {
+        root: {
           label: '简体中文',
           lang: 'zh-CN',
         },
-        'en': {
+        en: {
           label: 'English',
           lang: 'en',
         },
