@@ -23,13 +23,22 @@ export default defineConfig({
           lang: 'en',
         },
       },
-      // 侧边栏配置：体系化 AI 领域分组
+      // 侧边栏配置：体系化 AI 领域分组 + 专著电子书
       sidebar: [
         {
           label: '快速导航与关于',
           items: [
             { label: '关于本站与设计理念', link: '/about/' },
             { label: 'GitHub + Cloudflare 部署指南', link: '/cloudflare-github-deploy/' },
+          ],
+        },
+        {
+          label: '📖 专著《AI Agent 理论与实践》',
+          items: [
+            { label: '全书总览与前言', link: '/ai-agent-book/' },
+            { label: '第 1 章：AI Agent 原理与演进', link: '/ai-agent-book-ch1/' },
+            { label: '第 2 章：Agent 核心认知架构', link: '/ai-agent-book-ch2/' },
+            { label: '第 3 章：多 Agent 协作系统', link: '/ai-agent-book-ch3/' },
           ],
         },
         {
@@ -69,13 +78,7 @@ export default defineConfig({
           ],
         },
         {
-          label: '07. 书籍与长文写作',
-          items: [
-            { label: 'AI 辅助长文创作与书籍编写 (规划中)', link: '/prompt-basic/' },
-          ],
-        },
-        {
-          label: '08. 部署与站务说明',
+          label: '07. 部署与站务说明',
           items: [
             { label: 'Cloudflare Pages 静态部署', link: '/cloudflare-github-deploy/' },
           ],
