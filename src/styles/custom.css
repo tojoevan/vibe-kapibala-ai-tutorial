@@ -122,8 +122,7 @@ body {
 /* 🎯 .sl-container 容器两边留白减半 */
 .sl-container,
 div.sl-container {
-	padding-inline: 0.75rem !important;
-	padding-left: 0.75rem !important;
+	padding-left: 2.75rem !important;
 	padding-right: 0.75rem !important;
 	max-width: 100% !important;
 }
