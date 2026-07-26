@@ -13,7 +13,7 @@ export default defineConfig({
           lang: 'zh-CN',
         },
       },
-      // 侧边栏配置：无 Emoji 专业结构化分组
+      // 侧边栏配置：体系化 AI 领域分组
       sidebar: [
         {
           label: '快速导航与关于',
@@ -23,21 +23,51 @@ export default defineConfig({
           ],
         },
         {
-          label: '01. AI 基础知识',
+          label: '01. AI Agent 智能体',
+          items: [
+            { label: 'AI Agent 核心概念与架构', link: '/llm-agent-overview/' },
+          ],
+        },
+        {
+          label: '02. Skills 技能与工作流',
+          items: [
+            { label: 'Agent Skills 扩展能力设计', link: '/llm-agent-overview/' },
+          ],
+        },
+        {
+          label: '03. AI 编程与协作工具',
+          items: [
+            { label: 'Vibe Coding & Claude Code 实战', link: '/prompt-basic/' },
+          ],
+        },
+        {
+          label: '04. LLM 大模型基础',
           items: [
             { label: '大语言模型 (LLM) 入门', link: '/ai-intro/' },
           ],
         },
         {
-          label: '02. Prompt 提示词工程',
+          label: '05. Prompt 提示词工程',
           items: [
             { label: 'Prompt 核心技巧与结构设计', link: '/prompt-basic/' },
           ],
         },
         {
-          label: '03. Agent 智能体与框架',
+          label: '06. RAG 与向量数据库',
           items: [
-            { label: 'AI Agent 核心概念与架构', link: '/llm-agent-overview/' },
+            { label: 'RAG 检索增强生成原理', link: '/ai-intro/' },
+          ],
+        },
+        {
+          label: '07. 书籍与长文写作',
+          items: [
+            { label: 'AI 辅助长文创作与书籍编写 (规划中)', link: '/prompt-basic/' },
+          ],
+        },
+        {
+          label: '08. 部署与站务说明',
+          items: [
+            { label: 'Cloudflare Pages 静态部署', link: '/cloudflare-github-deploy/' },
           ],
         },
       ],
