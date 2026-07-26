@@ -13,11 +13,11 @@
 	--sl-color-gray-6: #ffffff; /* 纯白背景 */
 	--sl-color-black: #ffffff;
 
-	/* 🛠️ 彻底消灭 Pagefind 默认蓝色变量，重置为高档哑光冷灰与微浅灰 */
+	/* 🛠️ 彻底消灭 Pagefind 默认蓝色变量，强行重置为灰色 */
 	--pagefind-ui-primary: #0f172a !important;
 	--pagefind-ui-text: #0f172a !important;
 	--pagefind-ui-background: #ffffff !important;
-	--pagefind-ui-border: #cbd5e1 !important; /* 彻底消灭蓝色！ */
+	--pagefind-ui-border: #cbd5e1 !important; /* 高度显眼的清透淡灰边框，彻底消除蓝色！ */
 	--pagefind-ui-border-width: 1px !important;
 	--pagefind-ui-border-radius: 0.5rem !important;
 	--pagefind-ui-font: inherit !important;
@@ -37,11 +37,28 @@
 	--sl-color-gray-6: #0f172a;
 	--sl-color-black: #080b12;
 
-	/* 深色模式下的 Pagefind CSS 变量重置 */
+	/* 深色模式下的 Pagefind CSS 变量重置为哑光冷石墨灰 */
 	--pagefind-ui-primary: #f8fafc !important;
 	--pagefind-ui-text: #f8fafc !important;
 	--pagefind-ui-background: #0f172a !important;
-	--pagefind-ui-border: #334155 !important; /* 哑光石墨灰，消灭蓝色 */
+	--pagefind-ui-border: #334155 !important; /* 哑光石墨灰，彻底消除蓝色 */
+}
+
+/* 全域强制覆盖 Pagefind 所有子元素的 --pagefind-ui-border 变量为灰色 */
+site-search,
+starlight-search,
+.pagefind-ui,
+.pagefind-ui *,
+dialog[aria-label="Search"] * {
+	--pagefind-ui-border: #cbd5e1 !important;
+}
+
+:root[data-theme='dark'] site-search,
+:root[data-theme='dark'] starlight-search,
+:root[data-theme='dark'] .pagefind-ui,
+:root[data-theme='dark'] .pagefind-ui *,
+:root[data-theme='dark'] dialog[aria-label="Search"] * {
+	--pagefind-ui-border: #334155 !important;
 }
 
 /* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
@@ -168,30 +185,30 @@ dialog::backdrop {
 	pointer-events: none !important;
 }
 
-/* 4. 输入框样式：充足 padding-left 防文字遮挡 + 哑光灰聚焦（彻底消除蓝色边框） */
+/* 4. 输入框样式：灰色边框 + 哑光灰聚焦发光 */
 .pagefind-ui__search-input {
 	width: 100% !important;
 	height: 2.6rem !important;
 	font-size: 0.875rem !important;
 	background-color: var(--sl-color-gray-5) !important;
 	color: var(--sl-color-white) !important;
-	border: 1px solid var(--sl-color-gray-4) !important;
+	border: 1px solid var(--pagefind-ui-border) !important;
 	border-radius: 0.5rem !important;
 	padding: 0.4rem 2.2rem 0.4rem 2.5rem !important; /* 2.5rem 避免左侧图标遮挡文字 */
 	box-sizing: border-box !important;
 	transition: all 0.15s ease !important;
 }
 
-/* 彻底消除蓝色聚焦高亮框与外边框，替换为极其精致的哑光冷灰 */
+/* 彻底消除蓝色聚焦线框，100% 灰色边框 */
 .pagefind-ui__search-input:focus,
 .pagefind-ui__search-input:focus-visible,
 .pagefind-ui__search-input:active {
 	outline: none !important;
-	border-color: var(--sl-color-accent) !important; /* 优雅哑光冷灰 */
+	border-color: var(--sl-color-accent) !important; /* 哑光冷灰 */
 	box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2) !important;
 }
 
-/* 5. 清除按钮 (X) 样式：去除突兀蓝色 */
+/* 5. 清除按钮 (X) 样式：灰色 */
 .pagefind-ui__search-clear {
 	color: var(--sl-color-gray-3) !important;
 	background: transparent !important;
