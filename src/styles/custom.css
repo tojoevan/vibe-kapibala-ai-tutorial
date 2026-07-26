@@ -119,6 +119,15 @@ body {
 	max-width: 100% !important;
 }
 
+/* 🎯 .sl-container 容器两边留白减半 */
+.sl-container,
+div.sl-container {
+	padding-inline: 0.75rem !important;
+	padding-left: 0.75rem !important;
+	padding-right: 0.75rem !important;
+	max-width: 100% !important;
+}
+
 /* 精确物理测量下压 41px (2.7rem)，使右侧 h1 上沿 (Y=121px) 与左侧 01. AI Agent 灰块上沿 (Y=121px) 100% 垂直平齐 */
 .sl-markdown-content h1,
 h1#_top,
