@@ -17,6 +17,10 @@ export default defineConfig({
           label: '简体中文',
           lang: 'zh-CN',
         },
+        'en': {
+          label: 'English',
+          lang: 'en',
+        },
       },
       // 侧边栏配置：体系化 AI 领域分组
       sidebar: [
