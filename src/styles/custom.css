@@ -73,10 +73,10 @@ dialog[aria-label="Search"] * {
 	scroll-margin-top: 5.5rem !important;
 }
 
-/* 🎯 第二栏中“01. AI Agent 智能体”定位位置精准向下移动 20px */
+/* 🎯 第二栏中“01. AI Agent 智能体”定位位置 margin-top 改为 2rem !important */
 #ai-agent,
 section#ai-agent {
-	margin-top: 1.25rem !important; /* 1.25rem = 20px 精准向下移动 */
+	margin-top: 2rem !important;
 }
 
 /* 全局系统字体栈 - 100% 可商用、零 Google Fonts / 外部网络依赖 */
