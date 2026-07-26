@@ -47,12 +47,12 @@ const isAbout = pathname.includes('/about');
     }
 
     // 2. 首页专享：将左侧侧边栏由树状文件目录重构为“全景分类索引”
+    // 隐藏多余的“分类快速导航”小字，使 01. AI Agent 智能体 直接置顶！
     const sidebar = document.querySelector('.sidebar-content') || document.querySelector('starlight-sidebar');
     if (isHome && sidebar && !document.querySelector('.category-sidebar-nav')) {
       const categoryNav = document.createElement('div');
       categoryNav.className = 'category-sidebar-nav';
       categoryNav.innerHTML = `
-        <div class="category-nav-title">分类快速导航</div>
         <ul class="category-nav-list">
           <li><a href="#ai-agent" class="category-nav-item active">01. AI Agent 智能体</a></li>
           <li><a href="#skills-workflow" class="category-nav-item">02. Skills 技能与工作流</a></li>
@@ -85,16 +85,7 @@ const isAbout = pathname.includes('/about');
       });
     }
 
-    // 3. 🎯 核心解决：在首页下，直接用 JavaScript 动态内联精准赋予 h1 物理像素对齐！
-    if (isHome) {
-      const h1 = document.querySelector('h1#_top') || document.querySelector('.content-panel h1') || document.querySelector('h1');
-      if (h1) {
-        // 内联样式具有 100% 最高优先覆盖权
-        h1.style.setProperty('margin-top', '3.6rem', 'important');
-      }
-    }
-
-    // 4. 教程文章页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
+    // 3. 教程文章页面右侧第三栏 (right-sidebar) 动态注入“精选推荐链接”模块
     const rightSidebar = document.querySelector('.right-sidebar-panel') || document.querySelector('.right-sidebar');
     if (!isHome && rightSidebar && !document.querySelector('.recommended-links-widget')) {
       const widget = document.createElement('div');
@@ -204,16 +195,7 @@ const isAbout = pathname.includes('/about');
 
   /* 首页左侧分类导航样式 */
   .category-sidebar-nav {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .category-nav-title {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--sl-color-gray-3);
-    margin-bottom: 0.75rem;
-    padding-left: 0.5rem;
-    letter-spacing: -0.01em;
+    padding: 1.25rem 0.75rem 1.25rem 0.75rem !important;
   }
 
   .category-nav-list {
