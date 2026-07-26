@@ -6,6 +6,7 @@ export default defineConfig({
     starlight({
       title: '卡皮教程',
       description: '专注 AI 领域的极简空间感速查手册与资料导航',
+      favicon: '/favicon.svg',
       logo: {
         src: './public/logo.png',
         alt: '卡皮教程 Logo',

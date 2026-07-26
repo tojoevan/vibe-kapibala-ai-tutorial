@@ -61,20 +61,21 @@ h1#_top,
 	letter-spacing: -0.02em !important;
 }
 
-/* 标题与花体 K Logo 样式 */
+/* 标题与粗体高辨识度 K Logo 样式 */
 .site-title {
 	font-weight: 600;
-	font-size: 1rem !important;
+	font-size: 1.05rem !important;
 	letter-spacing: -0.01em;
 	color: var(--sl-color-white) !important;
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
+	gap: 0.55rem;
 }
 
 .site-title img {
-	height: 1.6rem !important;
+	height: 1.75rem !important;
 	width: auto !important;
+	border-radius: 0.25rem;
 	object-fit: contain;
 	transition: filter 0.2s ease;
 }
